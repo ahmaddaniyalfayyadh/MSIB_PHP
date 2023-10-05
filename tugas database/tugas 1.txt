@@ -1,0 +1,27 @@
+# menampilkan database yang sudah ada atau yang sudah dibuat
+SHOW DATABASES;
+
+# buat database baru : dbpegawai
+CREATE DATABASE dbpegawai;
+
+# masuk ke ruang database dbpegawai
+USE dbpegawai;
+
+# menampilkan  tabel  yang sudah ada di dbpegawai
+SHOW TABLES;
+
+#  buat tabel pegawai dengan field-field berikut:
+CREATE TABLE pegawai (
+    id INT PRIMARY KEY,
+    nip CHAR(5) NOT NULL,
+    nama VARCHAR(30) NOT NULL,
+    gender ENUM('L','P') NOT NULL,
+    umur INT NOT NULL,
+    berat_badan FLOAT
+);
+
+# Menampilkan database yang sudah dibuat (dbpegawai)
+SHOW DATABASES;
+
+# Melihat deskripsi tabel pegawai yang sudah dibuat
+DESCRIBE pegawai;
