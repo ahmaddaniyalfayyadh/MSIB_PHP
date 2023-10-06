@@ -1,0 +1,53 @@
+# Membuat tabel produk
+CREATE TABLE produk (
+    id INT PRIMARY KEY,
+    nama_produk VARCHAR(100),
+    deskripsi TEXT
+);
+
+# Mengisi tabel produk dengan data
+INSERT INTO produk (id, nama_produk, deskripsi)
+VALUES 
+    (101, 'Produk A', 'Deskripsi Produk A'),
+    (102, 'Produk B', 'Deskripsi Produk B'),
+    (103, 'Produk C', 'Deskripsi Produk C'),
+    (104, 'Produk D', 'Deskripsi Produk D'),
+    (105, 'Produk E', 'Deskripsi Produk E');
+
+# Membuat tabel vendor
+CREATE TABLE vendor (
+    nomor INT PRIMARY KEY,
+    nama VARCHAR(255),
+    kota VARCHAR(255),
+    kontak VARCHAR(255)
+);
+
+# Mengisi tabel vendor dengan data
+INSERT INTO vendor (nomor, nama, kota, kontak)
+VALUES 
+    (1, 'Vendor A', 'Kota A', '0812345678'),
+    (2, 'Vendor B', 'Kota B', '0823456789'),
+    (3, 'Vendor C', 'Kota C', '0834567890'),
+    (4, 'Vendor D', 'Kota D', '0845678901'),
+    (5, 'Vendor E', 'Kota E', '0856789012');
+
+# Membuat tabel pembelian
+CREATE TABLE pembelian (
+    tanggal DATE,
+    nomor INT PRIMARY KEY,
+    produk_id INT,
+    jumlah INT,
+    harga DECIMAL(10, 2),
+    vendor_id INT,
+    FOREIGN KEY (produk_id) REFERENCES produk(id),
+    FOREIGN KEY (vendor_id) REFERENCES vendor(nomor)
+);
+
+# Mengisi tabel pembelian dengan data
+INSERT INTO pembelian (tanggal, nomor, produk_id, jumlah, harga, vendor_id)
+VALUES 
+    ('2023-01-15', 1, 101, 3, 150.00, 1),
+    ('2023-02-18', 2, 102, 5, 200.50, 2),
+    ('2023-03-25', 3, 103, 2, 90.75, 3),
+    ('2023-04-10', 4, 101, 4, 180.00, 1),
+    ('2023-05-05', 5, 104, 6, 250.75, 4);
